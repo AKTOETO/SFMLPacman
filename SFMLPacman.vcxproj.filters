@@ -2,5 +2,20 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="SFMLPacman.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\scenes\MainScene.cpp" />
+    <ClCompile Include="src\sceneManager\SceneManager.cpp" />
+    <ClCompile Include="src\assets\AssetManger.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\scenes\BaseScene.h" />
+    <ClInclude Include="src\scenes\MainScene.h" />
+    <ClInclude Include="src\sceneManager\SceneManager.h" />
+    <ClInclude Include="src\assets\AssetManger.h" />
   </ItemGroup>
 </Project>
