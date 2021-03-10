@@ -3,9 +3,15 @@
 
 Game::Game()
 {
+    context = std::make_shared<Context>(Context());
     context->window->create(sf::VideoMode(640, 360), "SFML works!", sf::Style::Close);
-    context->sceneManager->setScene(Engine::SCENES::MAIN_MENU);
+    std::cout << "created!\n";
+    //context->sceneManager->setScene(Engine::SCENES::MAIN_MENU, context);
 	//context = std::make_shared<Context>(Context(*window));
+}
+
+Game::~Game()
+{
 }
 
 void Game::Run()

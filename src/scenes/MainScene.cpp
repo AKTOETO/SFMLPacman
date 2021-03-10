@@ -8,15 +8,15 @@ void Engine::MainScene::activate()
 
 void Engine::MainScene::processInput()
 {
-	std::cout << "e" << std::endl;
+	std::cout << "e1" << std::endl;
 }
 
 void Engine::MainScene::processUpdate()
 {
-	std::cout << "e" << std::endl;
+	std::cout << "e2" << std::endl;
 }
 
 void Engine::MainScene::processDraw()
 {
-	std::cout << "e" << std::endl;
+	std::cout << "e3" << std::endl;
 }

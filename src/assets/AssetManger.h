@@ -12,13 +12,14 @@ namespace Engine
 		WALL,
 	};
 
-	class AssetManger
+	class AssetManager
 	{
 	protected:
 		std::map<TEXTURES, sf::Texture> textures;
 
 	public:
-		AssetManger() {};
+		AssetManager() {};
+		~AssetManager() {};
 
 		bool AddTexture(TEXTURES texture, std::string path);
 	};

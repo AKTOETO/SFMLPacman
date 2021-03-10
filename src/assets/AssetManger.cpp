@@ -1,7 +1,7 @@
 #include "AssetManger.h"
 #include <iostream>
 
-bool Engine::AssetManger::AddTexture(TEXTURES id, std::string path)
+bool Engine::AssetManager::AddTexture(TEXTURES id, std::string path)
 {
     if (!textures[id].loadFromFile("path"))
     {

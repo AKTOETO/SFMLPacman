@@ -17,5 +17,6 @@
     <ClInclude Include="src\scenes\MainScene.h" />
     <ClInclude Include="src\sceneManager\SceneManager.h" />
     <ClInclude Include="src\assets\AssetManger.h" />
+    <ClInclude Include="src\Context.h" />
   </ItemGroup>
 </Project>
