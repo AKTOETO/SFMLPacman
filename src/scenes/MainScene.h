@@ -12,12 +12,12 @@ namespace Engine
 		std::shared_ptr<Context> context;
 
 	public:
-		MainScene(std::shared_ptr<Context> _context) :context(_context) { std::cout << "main" << std::endl; }
+		MainScene(std::shared_ptr<Context> _context) :context(_context) { std::cout << "mainscene constructor" << std::endl; }
 		~MainScene() {};
 
 		void activate() override;
 
-		void processInput()  override;
+		void processInput() override;
 		void processUpdate() override;
 		void processDraw() override;
 	};

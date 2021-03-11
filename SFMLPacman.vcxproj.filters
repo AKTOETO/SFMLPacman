@@ -19,4 +19,7 @@
     <ClInclude Include="src\assets\AssetManger.h" />
     <ClInclude Include="src\Context.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\main.ttf" />
+  </ItemGroup>
 </Project>

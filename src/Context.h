@@ -13,8 +13,8 @@ struct Context {
     Context()
     {
         window = std::make_unique<sf::RenderWindow>();
-        sceneManager = std::make_unique<Engine::SceneManager>(Engine::SceneManager());
-        assetManager = std::make_unique<Engine::AssetManager>(Engine::AssetManager());
-        std::cout << "context\n";
+        sceneManager = std::make_unique<Engine::SceneManager>();
+        assetManager = std::make_unique<Engine::AssetManager>();
+        std::cout << "context constructor\n";
     }
 };

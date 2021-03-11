@@ -1,23 +1,25 @@
-#include "Game.h"
 #include <iostream>
+#include "Game.h"
 
 Game::Game()
 {
-    context = std::make_shared<Context>(Context());
+    context = std::make_shared<Context>();
+    std::cout << "context has enable\n";
     context->window->create(sf::VideoMode(640, 360), "SFML works!", sf::Style::Close);
-    std::cout << "created!\n";
-    //context->sceneManager->setScene(Engine::SCENES::MAIN_MENU, context);
-	//context = std::make_shared<Context>(Context(*window));
+    std::cout << "window is created\n";
+    //std::unique_ptr<Engine::MainScene> mscene = std::make_unique<Engine::MainScene>(context);
+    context->sceneManager->setScene(std::make_unique<Engine::MainScene>(context));
+    std::cout << "game constructor\n";
 }
 
 Game::~Game()
 {
+    std::cout << "game destructor\n";
 }
 
 void Game::Run()
 {
-    std::cout << "f" << std::endl;
-    /*while (context->window->isOpen())
+    while (context->window->isOpen())
     {
         sf::Event event;
         while (context->window->pollEvent(event))
@@ -26,20 +28,11 @@ void Game::Run()
                 context->window->close();
         }
 
-        context->window->clear();
-        //window.draw(shape);
+       context->window->clear();
+        context->sceneManager->getScene()->processInput();
+        context->sceneManager->getScene()->processUpdate();
+        context->sceneManager->getScene()->processDraw();
         context->window->display();
-    }*/
-    /*while (window->isOpen())
-    {
-        sf::Event event;
-        while (window->pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window->close();
-        }
-
-        window->clear();
-        window->display();
-    }*/
+    }
+    
 }

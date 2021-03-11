@@ -1,8 +1,5 @@
 ﻿
 #include "src/Game.h"
-//#include "src/scenes/MainScene.h" +
-//#include "src/sceneManager/SceneManager.h"
-//#include "src/Context.h"
 #include <iostream>
 
 
@@ -26,16 +23,7 @@ int main()
         window.display();
     }*/
     Game game;
-    std::cout << "1\n";
     game.Run();
-
-    //Context cn;
-
-    //Engine::MainScene m_s;
-    /*std::cout << "1\n";
-    Engine::SceneManager sm;
-    std::cout << "2\n";*/
-    //sm.
 
     return 0;
 }

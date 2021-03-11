@@ -13,3 +13,8 @@ bool Engine::AssetManager::AddTexture(TEXTURES id, std::string path)
         
     }
 }
+
+bool Engine::AssetManager::AddFont(FONTS font, std::string path)
+{
+    return false;
+}
