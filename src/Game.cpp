@@ -5,9 +5,8 @@ Game::Game()
 {
     context = std::make_shared<Context>();
     std::cout << "context has enable\n";
-    context->window->create(sf::VideoMode(640, 360), "SFML works!", sf::Style::Close);
+    context->window->create(sf::VideoMode(480, 640), "SFML works!", sf::Style::Close);
     std::cout << "window is created\n";
-    //std::unique_ptr<Engine::MainScene> mscene = std::make_unique<Engine::MainScene>(context);
     context->sceneManager->setScene(std::make_unique<Engine::MainScene>(context));
     std::cout << "game constructor\n";
 }
@@ -28,7 +27,7 @@ void Game::Run()
                 context->window->close();
         }
 
-       context->window->clear();
+        context->window->clear(sf::Color::Blue);
         context->sceneManager->getScene()->processInput();
         context->sceneManager->getScene()->processUpdate();
         context->sceneManager->getScene()->processDraw();

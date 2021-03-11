@@ -166,6 +166,9 @@
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\coin.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

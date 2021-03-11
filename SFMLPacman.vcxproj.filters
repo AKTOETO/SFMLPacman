@@ -22,4 +22,7 @@
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\coin.png" />
+  </ItemGroup>
 </Project>

@@ -2,7 +2,10 @@
 
 #include <map>
 #include <string>
+#include <memory>
+#include <iostream>
 #include "SFML/Graphics/Texture.hpp"
+#include "SFML/Graphics/Font.hpp"
 
 namespace Engine
 {
@@ -21,14 +24,17 @@ namespace Engine
 	{
 	protected:
 		std::map<TEXTURES, sf::Texture> textures;
-		std::map<FONTS, sf::Texture> fonts;
+		std::map<FONTS, sf::Font> fonts;
 
 	public:
-		AssetManager() {};
-		~AssetManager() {};
+		AssetManager() { std::cout << "AssetManager constructor\n"; }
+		~AssetManager() { std::cout << "AssetManager destructor\n"; }
 
-		bool AddTexture(TEXTURES texture, std::string path);
-		bool AddFont(FONTS font, std::string path);
+		bool addTexture(TEXTURES texture, std::string path);
+		bool addFont(FONTS font, std::string path);
+
+		sf::Texture& getTexture(TEXTURES texture);
+		sf::Font& getFont(FONTS font);
 	};
 
 }

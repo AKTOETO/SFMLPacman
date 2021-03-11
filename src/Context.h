@@ -6,9 +6,9 @@
 #include "assets/AssetManger.h"
 
 struct Context {
-    std::unique_ptr<sf::RenderWindow> window;
-    std::unique_ptr<Engine::SceneManager> sceneManager;
-    std::unique_ptr<Engine::AssetManager> assetManager;
+    std::unique_ptr<sf::RenderWindow> window = NULL;
+    std::unique_ptr<Engine::SceneManager> sceneManager = NULL;
+    std::unique_ptr<Engine::AssetManager> assetManager = NULL;
 
     Context()
     {
