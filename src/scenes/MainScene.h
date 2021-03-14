@@ -3,6 +3,7 @@
 #include <iostream>
 #include "SFML/Graphics/Text.hpp"
 #include "BaseScene.h"
+#include "../objects/ButtonObject.h"
 #include "../Context.h"
 
 namespace Engine
@@ -14,10 +15,8 @@ namespace Engine
 
 		sf::Text titlePacman;
 
-		sf::Texture texture;
-		sf::Sprite sprite;
 	public:
-		MainScene(std::shared_ptr<Context>& _context) :context(_context) { std::cout << "mainscene constructor" << std::endl; }
+		MainScene(std::shared_ptr<Context>& _context);
 		~MainScene() {};
 
 		void activate() override;

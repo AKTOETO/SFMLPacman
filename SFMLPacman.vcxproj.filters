@@ -6,6 +6,8 @@
     <ClCompile Include="src\scenes\MainScene.cpp" />
     <ClCompile Include="src\assets\AssetManger.cpp" />
     <ClCompile Include="src\scenes\SceneManager.cpp" />
+    <ClCompile Include="src\objects\ButtonObject.cpp" />
+    <ClCompile Include="src\objects\ObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -18,11 +20,15 @@
     <ClInclude Include="src\assets\AssetManger.h" />
     <ClInclude Include="src\Context.h" />
     <ClInclude Include="src\scenes\SceneManager.h" />
+    <ClInclude Include="src\objects\BaseObject.h" />
+    <ClInclude Include="src\objects\ButtonObject.h" />
+    <ClInclude Include="src\objects\ObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\coin.png" />
+    <Image Include="assets\textures\main_button.png" />
   </ItemGroup>
 </Project>

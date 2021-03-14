@@ -1,11 +1,16 @@
-#include <iostream>
 #include "MainScene.h"
 
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 
+Engine::MainScene::MainScene(std::shared_ptr<Context>& _context) :context(_context)
+{
+	std::cout << "mainscene constructor" << std::endl; 
+}
+
 void Engine::MainScene::activate()
 { 
+	//PACMAN
 	context->assetManager->addFont(FONTS::MAIN_FONT, "assets/fonts/main.ttf");
 	titlePacman.setFont(context->assetManager->getFont(FONTS::MAIN_FONT));
 	titlePacman.setString("Pacman");
@@ -15,15 +20,17 @@ void Engine::MainScene::activate()
 	titlePacman.setOrigin(titlePacman.getLocalBounds().width / 2, titlePacman.getLocalBounds().height / 2);
 	titlePacman.setPosition(context->window->getSize().x / 2, context->window->getSize().y / 2 - 150);
 
-	/* ÂÛÐÅÇÀÒÜ ÝÒÎ ÎÒÑÞÄÀ
-	texture.loadFromFile("assets/textures/coin.png", sf::IntRect(0, 0, 6, 7));
+	//button PLAY
+	context->assetManager->addTexture(TEXTURES::MAIN_BUTTON, "assets/textures/main_button.png");
+	context->assetManager->addSprite(SPRITES::MAIN_BUTTON, TEXTURES::MAIN_BUTTON, sf::Vector2i(50, 8));
+	context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setOrigin(
+		sf::Vector2f(context->assetManager->getSprite(SPRITES::MAIN_BUTTON).getGlobalBounds().width / 2,
+					context->assetManager->getSprite(SPRITES::MAIN_BUTTON).getGlobalBounds().height / 2));
+	context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setPosition(context->window->getSize().x / 2,
+																		context->window->getSize().y / 2 - 50);
+	context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setScale(5, 5);	
+	context->objectManager->addObject(OBJECTS::MAIN_BUTTON, std::make_shared<Engine::ButtonObject>(context));
 
-	sprite.setTexture(texture);
-	sprite.setOrigin(sf::Vector2f(3.f, 3.f));
-	sprite.setScale(sf::Vector2f(10.f, 10.f));
-	sprite.setPosition(sf::Vector2f(10.f, 50.f));
-	sprite.rotate(15.f);
-	*/
 	std::cout << "activate" << std::endl;
 }
 
@@ -41,6 +48,6 @@ void Engine::MainScene::processDraw()
 {
 
 	context->window->draw(titlePacman);
-	//context->window->draw(sprite);
+	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processDraw();
 
 }

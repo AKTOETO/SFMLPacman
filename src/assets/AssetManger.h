@@ -2,10 +2,10 @@
 
 #include <map>
 #include <string>
-#include <memory>
 #include <iostream>
-#include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Font.hpp"
+#include "SFML/Graphics/Texture.hpp"
+#include "SFML/Graphics/Sprite.hpp"
 
 namespace Engine
 {
@@ -14,6 +14,7 @@ namespace Engine
 		GRASS = 0,
 		WALL,
 		COIN,
+		MAIN_BUTTON,
 	};
 
 	enum class FONTS
@@ -21,10 +22,16 @@ namespace Engine
 		MAIN_FONT = 0,
 	};
 
+	enum class SPRITES
+	{
+		MAIN_BUTTON = 0,
+	};
+
 	class AssetManager
 	{
 	protected:
 		std::map<TEXTURES, sf::Texture> textures;
+		std::map<SPRITES, sf::Sprite> sprites;
 		std::map<FONTS, sf::Font> fonts;
 
 	public:
@@ -33,9 +40,12 @@ namespace Engine
 
 		bool addTexture(TEXTURES texture, std::string path);
 		bool addFont(FONTS font, std::string path);
+		bool addSprite(SPRITES sprite, TEXTURES texture, sf::Vector2i size,
+					sf::Vector2i startCoords = sf::Vector2i(0, 0));
 
 		sf::Texture& getTexture(TEXTURES texture);
 		sf::Font& getFont(FONTS font);
+		sf::Sprite& getSprite(SPRITES sprite);
 	};
 
 }

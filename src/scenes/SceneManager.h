@@ -13,13 +13,11 @@ namespace Engine
 
 	class SceneManager
 	{
-		//сделать unique
 		std::unique_ptr<BaseScene> currentScene;
 
 	public:
 		SceneManager();
 		~SceneManager() {};
-		//SceneManager(const SceneManager&) { std::cout << "copy constructor scene manager\n"; }
 
 		bool setScene(std::unique_ptr<BaseScene> scene);
 		std::unique_ptr<BaseScene>& getScene();
