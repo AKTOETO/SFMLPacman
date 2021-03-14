@@ -21,15 +21,11 @@ void Engine::MainScene::activate()
 	titlePacman.setPosition(context->window->getSize().x / 2, context->window->getSize().y / 2 - 150);
 
 	//button PLAY
-	context->assetManager->addTexture(TEXTURES::MAIN_BUTTON, "assets/textures/main_button.png");
-	context->assetManager->addSprite(SPRITES::MAIN_BUTTON, TEXTURES::MAIN_BUTTON, sf::Vector2i(50, 8));
-	context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setOrigin(
-		sf::Vector2f(context->assetManager->getSprite(SPRITES::MAIN_BUTTON).getGlobalBounds().width / 2,
-					context->assetManager->getSprite(SPRITES::MAIN_BUTTON).getGlobalBounds().height / 2));
-	context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setPosition(context->window->getSize().x / 2,
-																		context->window->getSize().y / 2 - 50);
-	context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setScale(5, 5);	
-	context->objectManager->addObject(OBJECTS::MAIN_BUTTON, std::make_shared<Engine::ButtonObject>(context));
+	
+	
+	context->objectManager->addObject(OBJECTS::MAIN_BUTTON, std::make_shared<Engine::ButtonObject>(
+		context, "PLAY", context->window->getSize().x / 2,
+		context->window->getSize().y / 2 - 50, TEXTURES::MAIN_BUTTON, SPRITES::MAIN_BUTTON, FONTS::MAIN_FONT, 5, sf::Vector2i(49, 8)));
 
 	std::cout << "activate" << std::endl;
 }
