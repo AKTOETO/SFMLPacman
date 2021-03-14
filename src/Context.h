@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "sceneManager/SceneManager.h"
+#include "scenes/SceneManager.h"
 #include "assets/AssetManger.h"
 
 struct Context {

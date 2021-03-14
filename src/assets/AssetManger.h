@@ -13,6 +13,7 @@ namespace Engine
 	{
 		GRASS = 0,
 		WALL,
+		COIN,
 	};
 
 	enum class FONTS

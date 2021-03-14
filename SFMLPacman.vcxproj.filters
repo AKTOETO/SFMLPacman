@@ -4,8 +4,8 @@
     <ClCompile Include="SFMLPacman.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\scenes\MainScene.cpp" />
-    <ClCompile Include="src\sceneManager\SceneManager.cpp" />
     <ClCompile Include="src\assets\AssetManger.cpp" />
+    <ClCompile Include="src\scenes\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -15,9 +15,9 @@
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\scenes\BaseScene.h" />
     <ClInclude Include="src\scenes\MainScene.h" />
-    <ClInclude Include="src\sceneManager\SceneManager.h" />
     <ClInclude Include="src\assets\AssetManger.h" />
     <ClInclude Include="src\Context.h" />
+    <ClInclude Include="src\scenes\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />

@@ -23,11 +23,12 @@ void Game::Run()
         sf::Event event;
         while (context->window->pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed ||
+                event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
                 context->window->close();
         }
 
-        context->window->clear(sf::Color::Blue);
+        context->window->clear(sf::Color(2, 100, 255));
         context->sceneManager->getScene()->processInput();
         context->sceneManager->getScene()->processUpdate();
         context->sceneManager->getScene()->processDraw();
