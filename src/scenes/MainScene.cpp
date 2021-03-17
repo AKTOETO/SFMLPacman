@@ -11,7 +11,7 @@ Engine::MainScene::MainScene(std::shared_ptr<Context>& _context) :context(_conte
 void Engine::MainScene::activate()
 { 
 	//PACMAN
-	context->assetManager->addFont(FONTS::MAIN_FONT, "assets/fonts/main.ttf");
+	context->assetManager->addFont(FONTS::MAIN_FONT, "main.ttf");
 	titlePacman.setFont(context->assetManager->getFont(FONTS::MAIN_FONT));
 	titlePacman.setString("Pacman");
 	titlePacman.setCharacterSize(50);
@@ -21,8 +21,6 @@ void Engine::MainScene::activate()
 	titlePacman.setPosition(context->window->getSize().x / 2, context->window->getSize().y / 2 - 150);
 
 	//button PLAY
-	
-	
 	context->objectManager->addObject(OBJECTS::MAIN_BUTTON, std::make_shared<Engine::ButtonObject>(
 		context, "PLAY", context->window->getSize().x / 2,
 		context->window->getSize().y / 2 - 50, TEXTURES::MAIN_BUTTON, SPRITES::MAIN_BUTTON, FONTS::MAIN_FONT, 5, sf::Vector2i(49, 8)));
@@ -30,14 +28,14 @@ void Engine::MainScene::activate()
 	std::cout << "activate" << std::endl;
 }
 
-void Engine::MainScene::processInput()
+void Engine::MainScene::processInput(sf::Event event)
 {
-
+	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processInput(event);
 }
 
 void Engine::MainScene::processUpdate()
 {
-
+	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate();
 }
 
 void Engine::MainScene::processDraw()

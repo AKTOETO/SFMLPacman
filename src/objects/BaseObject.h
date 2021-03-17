@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 namespace Engine
 {
@@ -9,7 +10,7 @@ namespace Engine
 		BaseObject() {};
 		~BaseObject() {};
 
-		virtual void processInput() = 0;
+		virtual void processInput(sf::Event) = 0;
 		virtual void processUpdate() = 0;
 		virtual void processDraw() = 0;
 	};

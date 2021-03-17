@@ -21,7 +21,7 @@ namespace Engine
 
 		void activate() override;
 
-		void processInput() override;
+		void processInput(sf::Event) override;
 		void processUpdate() override;
 		void processDraw() override;
 	};

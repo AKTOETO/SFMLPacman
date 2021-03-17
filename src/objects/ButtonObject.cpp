@@ -1,10 +1,11 @@
 #include "ButtonObject.h"
 
 Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::string name, float x, float y, TEXTURES texture, SPRITES sprite, FONTS font, int scale, sf::Vector2i size)
+	:isPressedFunc(false), isPressedSprite(false), spriteID(sprite), mousePos({0, 0})
 {
 	context = _context;
 	//texture
-	context->assetManager->addTexture(texture, "assets/textures/main_button.png");
+	context->assetManager->addTexture(texture, "main_button.png");
 
 	//sprite
 	context->assetManager->addSprite(sprite, texture, size);
@@ -21,15 +22,45 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	playText.setOrigin(playText.getLocalBounds().width / 2, playText.getLocalBounds().height / 2);
 	playText.setPosition(x, y - 9);
 
-	std::cout << "buttonobject constructor\n";
+	std::cout << "Button Object constructor\n";
 }
 
-void Engine::ButtonObject::processInput()
+void Engine::ButtonObject::processInput(sf::Event event)
 {
+	if (event.type == sf::Event::MouseButtonPressed) 
+	{ 
+		mousePos = { event.mouseButton.x, event.mouseButton.y };
+		isPressedFunc = true;
+		isPressedSprite = true;
+	}
+	else
+	{
+		isPressedFunc = false;
+		isPressedSprite = false;
+	}
 }
 
 void Engine::ButtonObject::processUpdate()
 {
+	if (context->assetManager->getSprite(spriteID).getGlobalBounds().contains(
+		context->window->mapPixelToCoords(mousePos)))
+	{
+		if (isPressedFunc)
+		{
+			// переключение сцены на следующую
+			std::cout <<"mouse coords: "<<mousePos.x<<" "<<mousePos.y<< " Pressed\n";
+			isPressedFunc = false;
+		
+		}
+		if (isPressedSprite)
+		{
+			context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setColor({ 192, 192, 192 });
+		}
+		else
+		{
+			context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setColor({ 255, 255, 255 });
+		}
+	}
 }
 
 void Engine::ButtonObject::processDraw()

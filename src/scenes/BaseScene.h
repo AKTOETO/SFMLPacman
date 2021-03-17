@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 /// <summary>
 /// Game engine
@@ -13,7 +14,7 @@ namespace Engine
 
 		virtual void activate() = 0;
 
-		virtual void processInput() = 0;
+		virtual void processInput(sf::Event) = 0;
 		virtual void processUpdate() = 0;
 		virtual void processDraw() = 0;
 	};

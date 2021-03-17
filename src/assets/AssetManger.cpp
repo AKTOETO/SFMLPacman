@@ -5,7 +5,7 @@ bool Engine::AssetManager::addTexture(TEXTURES id, std::string path)
 {
     if (textures[id].getSize().x == 0)
     {
-        if (!textures[id].loadFromFile(path))
+        if (!textures[id].loadFromFile("assets/textures/" + path))
         {
             std::cerr << "Texture wasn`t loaded" << std::endl;
             return false;
@@ -23,7 +23,7 @@ bool Engine::AssetManager::addSprite(SPRITES sprite, TEXTURES texture, sf::Vecto
 
 bool Engine::AssetManager::addFont(FONTS font, std::string path)
 {  
-    if (!fonts[font].loadFromFile(path))
+    if (!fonts[font].loadFromFile("assets/fonts/" + path))
     {
         std::cerr << "Font wasn`t loaded" << std::endl;
         return false;
