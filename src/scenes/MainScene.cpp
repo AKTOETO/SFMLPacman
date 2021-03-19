@@ -36,6 +36,7 @@ void Engine::MainScene::processInput(sf::Event event)
 void Engine::MainScene::processUpdate()
 {
 	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate();
+	//менять сцену
 }
 
 void Engine::MainScene::processDraw()

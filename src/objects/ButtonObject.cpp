@@ -1,7 +1,7 @@
 #include "ButtonObject.h"
 
 Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::string name, float x, float y, TEXTURES texture, SPRITES sprite, FONTS font, int scale, sf::Vector2i size)
-	:isPressedFunc(false), isPressedSprite(false), spriteID(sprite), mousePos({0, 0})
+	:isPressedFunc(false), isPressedSprite(false), isKeyUpped(false), spriteID(sprite), mousePos({0, 0})
 {
 	context = _context;
 	//texture
@@ -38,9 +38,18 @@ void Engine::ButtonObject::processInput(sf::Event event)
 		isPressedFunc = false;
 		isPressedSprite = false;
 	}
+
+	if (event.type == sf::Event::MouseButtonReleased)
+	{
+		isKeyUpped = true;
+	}
+	else
+	{
+		isKeyUpped = false;
+	}
 }
 
-void Engine::ButtonObject::processUpdate()
+bool Engine::ButtonObject::processUpdate()
 {
 	if (context->assetManager->getSprite(spriteID).getGlobalBounds().contains(
 		context->window->mapPixelToCoords(mousePos)))
@@ -48,9 +57,15 @@ void Engine::ButtonObject::processUpdate()
 		if (isPressedFunc)
 		{
 			// переключение сцены на следующую
-			std::cout <<"mouse coords: "<<mousePos.x<<" "<<mousePos.y<< " Pressed\n";
+			//std::cout <<"mouse coords: "<<mousePos.x<<" "<<mousePos.y<< " Pressed\n";
 			isPressedFunc = false;
 		
+		}
+		if (isKeyUpped)
+		{
+			//std::cout << "released\n";
+			isKeyUpped = false;
+			return true;
 		}
 		if (isPressedSprite)
 		{
@@ -61,6 +76,7 @@ void Engine::ButtonObject::processUpdate()
 			context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setColor({ 255, 255, 255 });
 		}
 	}
+	return false;
 }
 
 void Engine::ButtonObject::processDraw()

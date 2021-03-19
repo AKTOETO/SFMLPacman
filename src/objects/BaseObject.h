@@ -11,7 +11,7 @@ namespace Engine
 		~BaseObject() {};
 
 		virtual void processInput(sf::Event) = 0;
-		virtual void processUpdate() = 0;
+		virtual bool processUpdate() = 0;
 		virtual void processDraw() = 0;
 	};
 }

@@ -8,6 +8,7 @@
     <ClCompile Include="src\scenes\SceneManager.cpp" />
     <ClCompile Include="src\objects\ButtonObject.cpp" />
     <ClCompile Include="src\objects\ObjectManager.cpp" />
+    <ClCompile Include="src\scenes\GameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -23,6 +24,7 @@
     <ClInclude Include="src\objects\BaseObject.h" />
     <ClInclude Include="src\objects\ButtonObject.h" />
     <ClInclude Include="src\objects\ObjectManager.h" />
+    <ClInclude Include="src\scenes\GameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />

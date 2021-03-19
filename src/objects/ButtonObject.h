@@ -11,7 +11,7 @@ namespace Engine
 	private:
 		std::shared_ptr<Context> context;
 		sf::Text playText;
-		bool isPressedSprite, isPressedFunc;
+		bool isPressedSprite, isPressedFunc, isKeyUpped;
 		SPRITES spriteID;
 		sf::Vector2i mousePos;
 
@@ -20,7 +20,7 @@ namespace Engine
 		~ButtonObject() { std::cout << "buttonObject destructor\n"; }
 
 		void processInput(sf::Event) override;
-		void processUpdate() override;
+		bool processUpdate() override;
 		void processDraw() override;
 	};
 

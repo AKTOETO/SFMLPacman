@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\scenes\GameScene.cpp" />
     <ClCompile Include="src\objects\ObjectManager.cpp" />
     <ClCompile Include="src\objects\ButtonObject.cpp" />
     <ClCompile Include="src\assets\AssetManger.cpp" />
@@ -158,6 +159,7 @@
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\scenes\GameScene.h" />
     <ClInclude Include="src\objects\ObjectManager.h" />
     <ClInclude Include="src\objects\ButtonObject.h" />
     <ClInclude Include="src\assets\AssetManger.h" />
