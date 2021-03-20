@@ -3,6 +3,7 @@
 #include <iostream>
 #include "SFML/Graphics/Text.hpp"
 #include "BaseScene.h"
+#include "GameScene.h"
 #include "../objects/ButtonObject.h"
 #include "../Context.h"
 

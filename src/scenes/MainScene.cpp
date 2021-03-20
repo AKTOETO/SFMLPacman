@@ -35,13 +35,17 @@ void Engine::MainScene::processInput(sf::Event event)
 
 void Engine::MainScene::processUpdate()
 {
-	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate();
+	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate())
+	{
+		context->sceneManager->setScene(std::make_unique<Engine::GameScene>(context));
+	}
 	//менять сцену
 }
 
 void Engine::MainScene::processDraw()
 {
 
+	context->window->clear(sf::Color(2, 100, 255));
 	context->window->draw(titlePacman);
 	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processDraw();
 

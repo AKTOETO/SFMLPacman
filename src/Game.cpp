@@ -30,7 +30,6 @@ void Game::Run()
             context->sceneManager->getScene()->processInput(event);
         }
 
-        context->window->clear(sf::Color(2, 100, 255));
         context->sceneManager->getScene()->processUpdate();
         context->sceneManager->getScene()->processDraw();
         context->window->display();
