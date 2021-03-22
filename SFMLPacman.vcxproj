@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\animations\AnimationManager.cpp" />
     <ClCompile Include="src\scenes\GameScene.cpp" />
     <ClCompile Include="src\objects\ObjectManager.cpp" />
     <ClCompile Include="src\objects\ButtonObject.cpp" />
@@ -153,12 +154,15 @@
     <ClCompile Include="src\scenes\MainScene.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="SFMLPacman.cpp" />
+    <ClCompile Include="src\animations\SwitchAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\animations\AnimationManager.h" />
+    <ClInclude Include="src\animations\BaseAnimation.h" />
     <ClInclude Include="src\scenes\GameScene.h" />
     <ClInclude Include="src\objects\ObjectManager.h" />
     <ClInclude Include="src\objects\ButtonObject.h" />
@@ -169,6 +173,7 @@
     <ClInclude Include="src\scenes\MainScene.h" />
     <ClInclude Include="src\scenes\BaseScene.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\animations\SwitchAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />

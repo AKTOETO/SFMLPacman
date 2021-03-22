@@ -1,6 +1,6 @@
 #include "ButtonObject.h"
 
-Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::string name, float x, float y, TEXTURES texture, SPRITES sprite, FONTS font, int scale, sf::Vector2i size)
+Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::string name, float x, float y, TEXTURES texture, SPRITES sprite, FONTS font, int scale, sf::Vector2i size, sf::Vector2i coords)
 	:isPressedFunc(false), isPressedSprite(false), isKeyUpped(false), spriteID(sprite), mousePos({0, 0})
 {
 	context = _context;
@@ -8,9 +8,9 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	context->assetManager->addTexture(texture, "main_button.png");
 
 	//sprite
-	context->assetManager->addSprite(sprite, texture, size);
+	context->assetManager->addSprite(sprite, texture, size, coords);
 	context->assetManager->getSprite(sprite).setOrigin(
-		sf::Vector2f(context->assetManager->getSprite(sprite).getGlobalBounds().width / 2, context->assetManager->getSprite(sprite).getGlobalBounds().height / 2));
+		sf::Vector2f(context->assetManager->getSprite(sprite).getLocalBounds().width / 2, context->assetManager->getSprite(sprite).getLocalBounds().height / 2));
 	context->assetManager->getSprite(sprite).setPosition(x, y);
 	context->assetManager->getSprite(sprite).setScale(scale, scale);
 
@@ -20,7 +20,7 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	playText.setCharacterSize(25);
 	playText.setFillColor(sf::Color::Yellow);
 	playText.setOrigin(playText.getLocalBounds().width / 2, playText.getLocalBounds().height / 2);
-	playText.setPosition(x, y - 9);
+	playText.setPosition(x, y - context->assetManager->getSprite(sprite).getLocalBounds().height / 3);
 
 	std::cout << "Button Object constructor\n";
 }

@@ -42,7 +42,10 @@ sf::Sprite& Engine::AssetManager::getSprite(SPRITES sprite)
     return sprites[sprite];
 }
 
+
 sf::Texture& Engine::AssetManager::getTexture(TEXTURES texture)
 {
     return textures[texture];
 }
+
+

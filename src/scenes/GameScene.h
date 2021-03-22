@@ -22,7 +22,7 @@ namespace Engine
 		void activate() override;
 
 		void processInput(sf::Event) override;
-		void processUpdate() override;
+		void processUpdate(float time) override;
 		void processDraw() override;
 
 	};

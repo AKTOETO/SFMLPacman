@@ -31,7 +31,7 @@ void Engine::GameScene::processInput(sf::Event event)
 	}
 }
 
-void Engine::GameScene::processUpdate()
+void Engine::GameScene::processUpdate(float time)
 {
 	//std::string chScoreNum = std::to_string(scoreNum);
 	score.setString(scoreState + std::to_string(scoreNum));

@@ -23,7 +23,11 @@ void Engine::MainScene::activate()
 	//button PLAY
 	context->objectManager->addObject(OBJECTS::MAIN_BUTTON, std::make_shared<Engine::ButtonObject>(
 		context, "PLAY", context->window->getSize().x / 2,
-		context->window->getSize().y / 2 - 50, TEXTURES::MAIN_BUTTON, SPRITES::MAIN_BUTTON, FONTS::MAIN_FONT, 5, sf::Vector2i(49, 8)));
+		context->window->getSize().y / 2 - 50, TEXTURES::MAIN_BUTTON, SPRITES::MAIN_BUTTON, FONTS::MAIN_FONT, 2, sf::Vector2i(148, 23), sf::Vector2i(1, 1)));
+
+	//switcher
+	context->animationManager->addAnimation(ANIMATION::SWITCH_SCENE, std::make_unique<SwitchAnimation>(context));
+	//context->animationManager->addAnimation(ANIMATION::R_SWITCH_SCENE, std::make_unique<SwitchAnimation>(context));
 
 	std::cout << "activate" << std::endl;
 }
@@ -33,20 +37,26 @@ void Engine::MainScene::processInput(sf::Event event)
 	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processInput(event);
 }
 
-void Engine::MainScene::processUpdate()
+void Engine::MainScene::processUpdate(float time)
 {
+	bool flag = context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->processUpdate(time);
 	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate())
+	{
+		
+		context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->play();
+		//context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->pause();
+	}
+	if (flag)
 	{
 		context->sceneManager->setScene(std::make_unique<Engine::GameScene>(context));
 	}
-	//менять сцену
+	//std::cout << "update\n";
 }
 
 void Engine::MainScene::processDraw()
 {
-
 	context->window->clear(sf::Color(2, 100, 255));
 	context->window->draw(titlePacman);
 	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processDraw();
-
+	context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->processDraw();
 }

@@ -16,7 +16,7 @@ namespace Engine
 		std::unique_ptr<BaseScene> currentScene;
 
 	public:
-		SceneManager();
+		SceneManager() {};
 		~SceneManager() {};
 
 		bool setScene(std::unique_ptr<BaseScene> scene);

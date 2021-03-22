@@ -16,7 +16,7 @@ namespace Engine
 		sf::Vector2i mousePos;
 
 	public:
-		ButtonObject(std::shared_ptr<Context> context, std::string name = "test", float x = 0, float y = 0, TEXTURES texture = TEXTURES::MAIN_BUTTON, SPRITES sprite = SPRITES::MAIN_BUTTON, FONTS font = FONTS::MAIN_FONT, int scale = 5, sf::Vector2i size = sf::Vector2i(100, 100));
+		ButtonObject(std::shared_ptr<Context> context, std::string name = "test", float x = 0, float y = 0, TEXTURES texture = TEXTURES::MAIN_BUTTON, SPRITES sprite = SPRITES::MAIN_BUTTON, FONTS font = FONTS::MAIN_FONT, int scale = 5, sf::Vector2i size = sf::Vector2i(100, 100), sf::Vector2i coords = sf::Vector2i(0, 0));
 		~ButtonObject() { std::cout << "buttonObject destructor\n"; }
 
 		void processInput(sf::Event) override;

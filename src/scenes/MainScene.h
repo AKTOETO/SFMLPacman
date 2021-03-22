@@ -5,6 +5,7 @@
 #include "BaseScene.h"
 #include "GameScene.h"
 #include "../objects/ButtonObject.h"
+#include "../animations/SwitchAnimation.h"
 #include "../Context.h"
 
 namespace Engine
@@ -23,7 +24,7 @@ namespace Engine
 		void activate() override;
 
 		void processInput(sf::Event) override;
-		void processUpdate() override;
+		void processUpdate(float time) override;
 		void processDraw() override;
 	};
 

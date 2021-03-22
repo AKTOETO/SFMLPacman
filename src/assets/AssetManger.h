@@ -25,6 +25,7 @@ namespace Engine
 	enum class SPRITES
 	{
 		MAIN_BUTTON = 0,
+		SWITCH_SCENE,
 	};
 
 	class AssetManager
