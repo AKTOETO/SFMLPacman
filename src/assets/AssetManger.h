@@ -36,8 +36,8 @@ namespace Engine
 		std::map<FONTS, sf::Font> fonts;
 
 	public:
-		AssetManager() { std::cout << "AssetManager constructor\n"; }
-		~AssetManager() { std::cout << "AssetManager destructor\n"; }
+		AssetManager();
+		~AssetManager();
 
 		bool addTexture(TEXTURES texture, std::string path);
 		bool addFont(FONTS font, std::string path);

@@ -3,7 +3,8 @@
 Engine::GameScene::GameScene(std::shared_ptr<Context>& _context)
 	:context(_context), scoreState("score:"), scoreNum(0)
 {
-	std::cout << "gamescene constructor" << std::endl;
+	//std::cout << "gamescene constructor" << std::endl;
+	context->logger->Message("gamescene constructor");
 }
 
 void Engine::GameScene::activate()

@@ -1,6 +1,14 @@
 #include "AssetManger.h"
 #include <iostream>
 
+Engine::AssetManager::AssetManager()
+{
+}
+
+Engine::AssetManager::~AssetManager()
+{
+}
+
 bool Engine::AssetManager::addTexture(TEXTURES id, std::string path)
 {
     if (textures[id].getSize().x == 0)

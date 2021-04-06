@@ -23,6 +23,8 @@ namespace Engine
 		bool processUpdate(float time) override;
 		void processDraw() override;
 
+		float getCountSteps() override;
+
 	};
 }
 

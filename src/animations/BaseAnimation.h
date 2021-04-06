@@ -15,6 +15,7 @@ namespace Engine
 
 		virtual void play() = 0;
 		virtual void pause() = 0;
+		virtual float getCountSteps() = 0;
 
 		virtual bool processUpdate(float time) = 0;
 		virtual void processDraw() = 0;

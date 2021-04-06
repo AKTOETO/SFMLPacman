@@ -6,8 +6,10 @@
 #include "assets/AssetManger.h"
 #include "objects/ObjectManager.h"
 #include "animations/AnimationManager.h"
+#include "objects/Logger.h"
 
 struct Context {
+    std::unique_ptr<Engine::Logger> logger = NULL;
     std::unique_ptr<sf::RenderWindow> window = NULL;
     std::unique_ptr<Engine::SceneManager> sceneManager = NULL;
     std::unique_ptr<Engine::AssetManager> assetManager = NULL;
@@ -16,11 +18,11 @@ struct Context {
 
     Context()
     {
+        logger = std::make_unique<Engine::Logger>();
         window = std::make_unique<sf::RenderWindow>();
         sceneManager = std::make_unique<Engine::SceneManager>();
         assetManager = std::make_unique<Engine::AssetManager>();
         objectManager = std::make_unique<Engine::ObjectManager>();
         animationManager = std::make_unique<Engine::AnimationManager>();
-        std::cout << "context constructor\n";
     }
 };

@@ -17,8 +17,8 @@ namespace Engine
 		std::map<OBJECTS, std::shared_ptr<BaseObject>> objects;
 
 	public:
-		ObjectManager() { std::cout << "ObjectManager constructor\n"; }
-		~ObjectManager() {};
+		ObjectManager();
+		~ObjectManager();
 
 		bool addObject(OBJECTS name, std::shared_ptr<BaseObject> object);
 

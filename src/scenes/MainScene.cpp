@@ -5,7 +5,7 @@
 
 Engine::MainScene::MainScene(std::shared_ptr<Context>& _context) :context(_context)
 {
-	std::cout << "mainscene constructor" << std::endl; 
+	context->logger->Message("mainscene constructor");
 }
 
 void Engine::MainScene::activate()
@@ -29,7 +29,8 @@ void Engine::MainScene::activate()
 	context->animationManager->addAnimation(ANIMATION::SWITCH_SCENE, std::make_unique<SwitchAnimation>(context));
 	//context->animationManager->addAnimation(ANIMATION::R_SWITCH_SCENE, std::make_unique<SwitchAnimation>(context));
 
-	std::cout << "activate" << std::endl;
+	//std::cout << "activate" << std::endl;
+	context->logger->Message("activate main scene");
 }
 
 void Engine::MainScene::processInput(sf::Event event)
@@ -39,18 +40,10 @@ void Engine::MainScene::processInput(sf::Event event)
 
 void Engine::MainScene::processUpdate(float time)
 {
-	bool flag = context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->processUpdate(time);
 	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate())
-	{
-		
-		context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->play();
-		//context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->pause();
-	}
-	if (flag)
-	{
+	{		
 		context->sceneManager->setScene(std::make_unique<Engine::GameScene>(context));
 	}
-	//std::cout << "update\n";
 }
 
 void Engine::MainScene::processDraw()

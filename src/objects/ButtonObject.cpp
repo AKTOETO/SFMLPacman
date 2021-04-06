@@ -22,7 +22,8 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	playText.setOrigin(playText.getLocalBounds().width / 2, playText.getLocalBounds().height / 2);
 	playText.setPosition(x, y - context->assetManager->getSprite(sprite).getLocalBounds().height / 3);
 
-	std::cout << "Button Object constructor\n";
+	//std::cout << "Button Object constructor\n";
+	context->logger->Message("button Object constructor");
 }
 
 void Engine::ButtonObject::processInput(sf::Event event)

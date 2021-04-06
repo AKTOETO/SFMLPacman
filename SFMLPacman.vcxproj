@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{112fbb5c-125f-4861-addd-6d31485730ec}</ProjectGuid>
     <RootNamespace>SFMLPacman</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -114,15 +114,17 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>SFML_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_PATH)\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SFML_PATH)\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-window-s-d.lib;sfml-graphics-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;kernel32.lib;user32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -145,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\objects\Logger.cpp" />
     <ClCompile Include="src\animations\AnimationManager.cpp" />
     <ClCompile Include="src\scenes\GameScene.cpp" />
     <ClCompile Include="src\objects\ObjectManager.cpp" />
@@ -159,8 +162,10 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\objects\Logger.h" />
     <ClInclude Include="src\animations\AnimationManager.h" />
     <ClInclude Include="src\animations\BaseAnimation.h" />
     <ClInclude Include="src\scenes\GameScene.h" />
@@ -184,5 +189,22 @@
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\sfml_graphics.redist.2.5.1\build\native\sfml_graphics.redist.targets" Condition="Exists('packages\sfml_graphics.redist.2.5.1\build\native\sfml_graphics.redist.targets')" />
+    <Import Project="packages\sfml_system.redist.2.5.1\build\native\sfml_system.redist.targets" Condition="Exists('packages\sfml_system.redist.2.5.1\build\native\sfml_system.redist.targets')" />
+    <Import Project="packages\sfml_system.2.5.1\build\native\sfml_system.targets" Condition="Exists('packages\sfml_system.2.5.1\build\native\sfml_system.targets')" />
+    <Import Project="packages\sfml_window.redist.2.5.1\build\native\sfml_window.redist.targets" Condition="Exists('packages\sfml_window.redist.2.5.1\build\native\sfml_window.redist.targets')" />
+    <Import Project="packages\sfml_window.2.5.1\build\native\sfml_window.targets" Condition="Exists('packages\sfml_window.2.5.1\build\native\sfml_window.targets')" />
+    <Import Project="packages\sfml_graphics.2.5.1\build\native\sfml_graphics.targets" Condition="Exists('packages\sfml_graphics.2.5.1\build\native\sfml_graphics.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\sfml_graphics.redist.2.5.1\build\native\sfml_graphics.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sfml_graphics.redist.2.5.1\build\native\sfml_graphics.redist.targets'))" />
+    <Error Condition="!Exists('packages\sfml_system.redist.2.5.1\build\native\sfml_system.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sfml_system.redist.2.5.1\build\native\sfml_system.redist.targets'))" />
+    <Error Condition="!Exists('packages\sfml_system.2.5.1\build\native\sfml_system.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sfml_system.2.5.1\build\native\sfml_system.targets'))" />
+    <Error Condition="!Exists('packages\sfml_window.redist.2.5.1\build\native\sfml_window.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sfml_window.redist.2.5.1\build\native\sfml_window.redist.targets'))" />
+    <Error Condition="!Exists('packages\sfml_window.2.5.1\build\native\sfml_window.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sfml_window.2.5.1\build\native\sfml_window.targets'))" />
+    <Error Condition="!Exists('packages\sfml_graphics.2.5.1\build\native\sfml_graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\sfml_graphics.2.5.1\build\native\sfml_graphics.targets'))" />
+  </Target>
 </Project>
