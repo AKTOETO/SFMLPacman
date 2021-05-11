@@ -14,7 +14,7 @@ namespace Engine
 		GRASS = 0,
 		WALL,
 		COIN,
-		MAIN_BUTTON,
+		MAIN,
 	};
 
 	enum class FONTS

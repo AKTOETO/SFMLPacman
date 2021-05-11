@@ -26,6 +26,10 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	context->logger->Message("button Object constructor");
 }
 
+void Engine::ButtonObject::activate()
+{
+}
+
 void Engine::ButtonObject::processInput(sf::Event event)
 {
 	if (event.type == sf::Event::MouseButtonPressed) 
@@ -50,7 +54,7 @@ void Engine::ButtonObject::processInput(sf::Event event)
 	}
 }
 
-bool Engine::ButtonObject::processUpdate()
+bool Engine::ButtonObject::processUpdate(float time)
 {
 	if (context->assetManager->getSprite(spriteID).getGlobalBounds().contains(
 		context->window->mapPixelToCoords(mousePos)))

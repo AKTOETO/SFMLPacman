@@ -11,16 +11,21 @@ namespace Engine
 	private:
 		std::shared_ptr<Context> context;
 		sf::Text playText;
-		bool isPressedSprite, isPressedFunc, isKeyUpped;
 		SPRITES spriteID;
 		sf::Vector2i mousePos;
+		bool isPressedSprite, isPressedFunc, isKeyUpped;
 
 	public:
-		ButtonObject(std::shared_ptr<Context> context, std::string name = "test", float x = 0, float y = 0, TEXTURES texture = TEXTURES::MAIN_BUTTON, SPRITES sprite = SPRITES::MAIN_BUTTON, FONTS font = FONTS::MAIN_FONT, int scale = 5, sf::Vector2i size = sf::Vector2i(100, 100), sf::Vector2i coords = sf::Vector2i(0, 0));
-		~ButtonObject() { std::cout << "buttonObject destructor\n"; }
+		ButtonObject(std::shared_ptr<Context> context, std::string name = "test", float x = 0, float y = 0,
+			TEXTURES texture = TEXTURES::MAIN, SPRITES sprite = SPRITES::MAIN_BUTTON,
+			FONTS font = FONTS::MAIN_FONT, int scale = 5,
+			sf::Vector2i size = sf::Vector2i(100, 100), sf::Vector2i coords = sf::Vector2i(0, 0));
+		~ButtonObject() {};
+
+		void activate() override;
 
 		void processInput(sf::Event) override;
-		bool processUpdate() override;
+		bool processUpdate(float time) override;
 		void processDraw() override;
 	};
 

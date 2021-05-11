@@ -1,8 +1,5 @@
 #include "MainScene.h"
 
-#include "SFML/Graphics/Texture.hpp"
-#include "SFML/Graphics/Sprite.hpp"
-
 Engine::MainScene::MainScene(std::shared_ptr<Context>& _context) :context(_context)
 {
 	context->logger->Message("mainscene constructor");
@@ -23,11 +20,7 @@ void Engine::MainScene::activate()
 	//button PLAY
 	context->objectManager->addObject(OBJECTS::MAIN_BUTTON, std::make_shared<Engine::ButtonObject>(
 		context, "PLAY", context->window->getSize().x / 2,
-		context->window->getSize().y / 2 - 50, TEXTURES::MAIN_BUTTON, SPRITES::MAIN_BUTTON, FONTS::MAIN_FONT, 2, sf::Vector2i(148, 23), sf::Vector2i(1, 1)));
-
-	//switcher
-	context->animationManager->addAnimation(ANIMATION::SWITCH_SCENE, std::make_unique<SwitchAnimation>(context));
-	//context->animationManager->addAnimation(ANIMATION::R_SWITCH_SCENE, std::make_unique<SwitchAnimation>(context));
+		context->window->getSize().y / 2 - 50, TEXTURES::MAIN, SPRITES::MAIN_BUTTON, FONTS::MAIN_FONT, 2, sf::Vector2i(148, 23), sf::Vector2i(1, 1)));
 
 	//std::cout << "activate" << std::endl;
 	context->logger->Message("activate main scene");
@@ -40,10 +33,12 @@ void Engine::MainScene::processInput(sf::Event event)
 
 void Engine::MainScene::processUpdate(float time)
 {
-	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate())
-	{		
-		context->sceneManager->setScene(std::make_unique<Engine::GameScene>(context));
+	//нажание кнопки PLAY
+	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate(time))
+	{	
+		context->sceneManager->setScene(Engine::SCENES::GAME_SCENE,std::make_unique<Engine::GameScene>(context));
 	}
+
 }
 
 void Engine::MainScene::processDraw()
@@ -51,5 +46,5 @@ void Engine::MainScene::processDraw()
 	context->window->clear(sf::Color(2, 100, 255));
 	context->window->draw(titlePacman);
 	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processDraw();
-	context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->processDraw();
+	//context->animationManager->getAnimation(ANIMATION::SWITCH_SCENE)->processDraw();
 }

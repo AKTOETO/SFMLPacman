@@ -21,7 +21,6 @@ namespace Engine
 		~ObjectManager();
 
 		bool addObject(OBJECTS name, std::shared_ptr<BaseObject> object);
-
 		std::shared_ptr<BaseObject> getObject(OBJECTS object);
 	};
 }

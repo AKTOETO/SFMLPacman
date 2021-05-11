@@ -10,7 +10,6 @@
     <ClCompile Include="src\objects\ObjectManager.cpp" />
     <ClCompile Include="src\scenes\GameScene.cpp" />
     <ClCompile Include="src\animations\AnimationManager.cpp" />
-    <ClCompile Include="src\animations\SwitchAnimation.cpp" />
     <ClCompile Include="src\objects\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -31,7 +30,6 @@
     <ClInclude Include="src\scenes\GameScene.h" />
     <ClInclude Include="src\animations\BaseAnimation.h" />
     <ClInclude Include="src\animations\AnimationManager.h" />
-    <ClInclude Include="src\animations\SwitchAnimation.h" />
     <ClInclude Include="src\objects\Logger.h" />
   </ItemGroup>
   <ItemGroup>

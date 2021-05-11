@@ -157,7 +157,6 @@
     <ClCompile Include="src\scenes\MainScene.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="SFMLPacman.cpp" />
-    <ClCompile Include="src\animations\SwitchAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -178,7 +177,6 @@
     <ClInclude Include="src\scenes\MainScene.h" />
     <ClInclude Include="src\scenes\BaseScene.h" />
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\animations\SwitchAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />

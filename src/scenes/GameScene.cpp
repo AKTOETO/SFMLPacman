@@ -29,6 +29,10 @@ void Engine::GameScene::processInput(sf::Event event)
 		{
 			scoreNum++;
 		}
+		else if (event.key.code == sf::Keyboard::D)
+		{
+			scoreNum--;
+		}
 	}
 }
 

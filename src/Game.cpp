@@ -10,7 +10,7 @@ Game::Game()
     //context->window->setFramerateLimit(60);
     context->logger->Message("window is created");
 
-    context->sceneManager->setScene(std::make_unique<Engine::MainScene>(context));
+    context->sceneManager->setScene(Engine::SCENES::MAIN_SCENE, std::make_unique<Engine::MainScene>(context));
     context->logger->Message("game constructor");
 }
 

@@ -7,20 +7,22 @@ namespace Engine
 {
 	enum class SCENES
 	{
-		MAIN_MENU = 0,
-		MAIN_GAME,
+		NULL_SCENE = -1,
+		MAIN_SCENE = 0,
+		GAME_SCENE,
 	};
 
 	class SceneManager
 	{
-		std::unique_ptr<BaseScene> currentScene;
+		std::map<SCENES, std::unique_ptr<BaseScene>> sceneList;
+		SCENES currentScene;
 
 	public:
 		SceneManager() {};
 		~SceneManager() {};
 
-		bool setScene(std::unique_ptr<BaseScene> scene);
-		std::unique_ptr<BaseScene>& getScene();
+		bool setScene(SCENES nameScene, std::unique_ptr<BaseScene> scene);
+		std::unique_ptr<BaseScene>& getScene(SCENES nameScene = SCENES::NULL_SCENE);
 	};
 }
 

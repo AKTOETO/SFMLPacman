@@ -2,16 +2,21 @@
 
 #include "SceneManager.h"
 
-bool Engine::SceneManager::setScene(std::unique_ptr<BaseScene> scene)
+bool Engine::SceneManager::setScene(SCENES nameScene, std::unique_ptr<BaseScene> scene)
 {
-	//scenesMap[SCENES::MAIN_MENU] = move(scene);
-
-	currentScene = std::move(scene);
-	currentScene->activate();
+	/*currentScene = std::move(scene);
+	currentScene->activate();*/
+	currentScene = nameScene;
+	sceneList[currentScene] = std::move(scene);
+	sceneList[currentScene]->activate();
 	return true;
 }
 
-std::unique_ptr<Engine::BaseScene>& Engine::SceneManager::getScene()
+std::unique_ptr<Engine::BaseScene>& Engine::SceneManager::getScene(SCENES nameScene)
 {
-	return currentScene;
+	if (nameScene != SCENES::NULL_SCENE)
+	{
+		return sceneList[nameScene];
+	}
+	return sceneList[currentScene];
 }

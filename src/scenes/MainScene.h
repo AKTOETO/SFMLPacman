@@ -2,10 +2,12 @@
 
 #include <iostream>
 #include "SFML/Graphics/Text.hpp"
+#include "SFML/Graphics/Texture.hpp"
+#include "SFML/Graphics/Sprite.hpp"
+
 #include "BaseScene.h"
 #include "GameScene.h"
 #include "../objects/ButtonObject.h"
-#include "../animations/SwitchAnimation.h"
 #include "../Context.h"
 
 namespace Engine
