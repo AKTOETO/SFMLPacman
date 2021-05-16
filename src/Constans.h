@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SFML/Graphics/Text.hpp"
 
-#define VELOCITY 0.5 //0.5
+#define VELOCITY 0.5 //0.5 | 1.5
 
 
 namespace Engine
@@ -29,7 +29,7 @@ namespace Engine
 	{
 		MAIN_BUTTON = 0,
 		MAIN_BACKGROUND,
-		SWITCH_SCENE,
+		SWITCH_BACKGROUND,
 	};
 
 	enum class OBJECTS
@@ -40,7 +40,7 @@ namespace Engine
 
 	struct TextStyle
 	{
-		sf::Font font;
+		FONTS font;
 		std::string text;
 		int characterSize;
 		sf::Color color;

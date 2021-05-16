@@ -4,11 +4,10 @@
 
 bool Engine::SceneManager::setScene(SCENES nameScene, std::unique_ptr<BaseScene> scene)
 {
-	/*currentScene = std::move(scene);
-	currentScene->activate();*/
 	currentScene = nameScene;
 	sceneList[currentScene] = std::move(scene);
 	sceneList[currentScene]->activate();
+		
 	return true;
 }
 

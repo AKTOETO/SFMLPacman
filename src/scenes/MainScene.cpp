@@ -7,25 +7,18 @@ Engine::MainScene::MainScene(std::shared_ptr<Context>& _context) :context(_conte
 
 void Engine::MainScene::activate()
 { 
-	//PACMAN
-	/*context->assetManager->addFont(FONTS::MAIN_FONT, "main.ttf");
-	titlePacman.setFont(context->assetManager->getFont(FONTS::MAIN_FONT));
-	titlePacman.setString("Pacman");
-	titlePacman.setCharacterSize(50);
-	titlePacman.setFillColor(sf::Color::Yellow);
-	titlePacman.setStyle(sf::Text::Bold | sf::Text::Underlined);
-	titlePacman.setOrigin(titlePacman.getLocalBounds().width / 2, titlePacman.getLocalBounds().height / 2);
-	titlePacman.setPosition(context->window->getSize().x / 2, context->window->getSize().y / 2 - 150);*/
+	p_deactivate = false;
 
+	//PACMAN
 	TextStyle tx;
-	tx.font = context->assetManager->getFont(FONTS::MAIN_FONT);
+	tx.font = FONTS::MAIN_FONT;
 	tx.text = "Pacman";
 	tx.characterSize = 50;
 	tx.color = sf::Color::Yellow;
 	tx.style = sf::Text::Bold | sf::Text::Underlined;
 	tx.pos = sf::Vector2i( context->window->getSize().x / 2, context->window->getSize().y / 2 - 150 );
 
-	context->objectManager->addObject(OBJECTS::MAIN_TEXT, std::make_shared<Engine::TextObject>(context,tx));
+	context->objectManager->addObject(OBJECTS::MAIN_TEXT, std::make_shared<Engine::TextObject>(context, tx));
 
 
 	//button PLAY
@@ -41,6 +34,23 @@ void Engine::MainScene::activate()
 	context->assetManager->getSprite(SPRITES::MAIN_BACKGROUND).setScale({ 2,2 });
 
 	context->logger->Message("activate main scene");
+
+
+	//switcher
+	context->assetManager->addSprite(SPRITES::SWITCH_BACKGROUND, TEXTURES::MAIN,
+		sf::Vector2i(240, 320), sf::Vector2i(240 + 151 + 1, 0));
+	context->assetManager->getSprite(SPRITES::SWITCH_BACKGROUND).setScale({ 2,2 });
+
+}
+
+void Engine::MainScene::deactivate()
+{
+	p_deactivate = true;
+}
+
+bool Engine::MainScene::get_status()
+{
+	return p_deactivate;
 }
 
 void Engine::MainScene::processInput(sf::Event event)
@@ -51,28 +61,40 @@ void Engine::MainScene::processInput(sf::Event event)
 void Engine::MainScene::processUpdate(float time)
 {
 	//button pressed PLAY
-	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate(time))
+	if (context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processUpdate(time) || p_deactivate == true)
 	{	
-		//context->sceneManager->setScene(Engine::SCENES::GAME_SCENE,std::make_unique<Engine::GameScene>(context));
-		deactivate = true;
+		
+		p_deactivate = true;
 	}
-	if (deactivate == true)
+	if (p_deactivate == true)
 	{
-		//PACMAN
-		/*titlePacman.setPosition(titlePacman.getPosition().x,
-			titlePacman.getPosition().y - VELOCITY * time);*/
+		
+		//PACMAN		
+		context->objectManager->getObject(OBJECTS::MAIN_TEXT)->setPosition(
+			context->objectManager->getObject(OBJECTS::MAIN_TEXT)->getPosition().x,
+			context->objectManager->getObject(OBJECTS::MAIN_TEXT)->getPosition().y - VELOCITY * time
+		);
+		context->objectManager->getObject(OBJECTS::MAIN_TEXT)->processUpdate(time);
 
 		//button
 		context->objectManager->getObject(Engine::OBJECTS::MAIN_BUTTON)->setPosition(
 			context->objectManager->getObject(Engine::OBJECTS::MAIN_BUTTON)->getPosition().x,
 			context->objectManager->getObject(Engine::OBJECTS::MAIN_BUTTON)->getPosition().y - VELOCITY * time
 		);
-	
+
+
 		//background
 		context->assetManager->getSprite(SPRITES::MAIN_BACKGROUND).setPosition(
 			context->assetManager->getSprite(SPRITES::MAIN_BACKGROUND).getPosition().x,
 			context->assetManager->getSprite(SPRITES::MAIN_BACKGROUND).getPosition().y - VELOCITY * time
 		);
+		if (abs(context->assetManager->getSprite(SPRITES::MAIN_BACKGROUND).getPosition().y)
+			> context->window->getSize().y)
+		{
+			p_deactivate = false;
+			context->sceneManager->setScene(SCENES::GAME_SCENE, std::make_unique<Engine::GameScene>(context));
+		}
+		
 	}
 
 }
@@ -80,8 +102,9 @@ void Engine::MainScene::processUpdate(float time)
 void Engine::MainScene::processDraw()
 {
 	context->window->clear(/*sf::Color(2, 100, 255)*/);
+	context->window->draw(context->assetManager->getSprite(SPRITES::SWITCH_BACKGROUND));
+
 	context->window->draw(context->assetManager->getSprite(SPRITES::MAIN_BACKGROUND));
-	//context->window->draw(titlePacman);
-	//context->objectManager->getObject(OBJECTS::MAIN_TEXT)->processDraw();
 	context->objectManager->getObject(OBJECTS::MAIN_BUTTON)->processDraw();
+	context->objectManager->getObject(OBJECTS::MAIN_TEXT)->processDraw();
 }

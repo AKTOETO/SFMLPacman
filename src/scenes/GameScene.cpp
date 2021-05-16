@@ -1,14 +1,18 @@
 #include "GameScene.h"
 
 Engine::GameScene::GameScene(std::shared_ptr<Context>& _context)
-	:context(_context), scoreState("score:"), scoreNum(0)
+	:context(_context)
 {
-	//std::cout << "gamescene constructor" << std::endl;
 	context->logger->Message("gamescene constructor");
 }
 
 void Engine::GameScene::activate()
 {
+	scoreState = "score:";
+	scoreNum = 0;
+	p_deactivate = false;
+
+
 	context->assetManager->addFont(FONTS::MAIN_FONT, "main.ttf");
 	score.setFont(context->assetManager->getFont(FONTS::MAIN_FONT));	
 	score.setString(scoreState);
@@ -18,6 +22,16 @@ void Engine::GameScene::activate()
 	score.setOrigin(score.getLocalBounds().width / 2, score.getLocalBounds().height / 2);
 	score.setPosition(score.getGlobalBounds().width / 2 + 10,
 		score.getGlobalBounds().height / 2 + 5);
+}
+
+void Engine::GameScene::deactivate()
+{
+	p_deactivate = true;
+}
+
+bool Engine::GameScene::get_status()
+{
+	return false;
 }
 
 void Engine::GameScene::processInput(sf::Event event)

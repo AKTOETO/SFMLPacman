@@ -19,14 +19,15 @@ namespace Engine
 	private:
 		std::shared_ptr<Context> context;
 
-		//sf::Text titlePacman;
-		bool deactivate = false;
+		bool p_deactivate;
 
 	public:
 		MainScene(std::shared_ptr<Context>& _context);
 		~MainScene() {};
 
 		void activate() override;
+		void deactivate() override;
+		bool get_status() override;
 
 		void processInput(sf::Event) override;
 		void processUpdate(float time) override;

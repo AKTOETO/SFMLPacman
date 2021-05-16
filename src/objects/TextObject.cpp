@@ -1,13 +1,18 @@
 #include "TextObject.h"
 
-Engine::TextObject::TextObject(std::shared_ptr<Context> _context, TextStyle t_style)
+Engine::TextObject::TextObject(std::shared_ptr<Context> _context, TextStyle& t_style)
 {
 	context = _context;
+	/*text.setFont(context->assetManager->getFont(FONTS::MAIN_FONT));
+	text.setPosition(100, 100);
+	text.setString("JOPA");
+	text.setCharacterSize(20);
+	text.setFillColor(sf::Color::Yellow);*/
 	x = t_style.pos.x;
 	y = t_style.pos.y;
 
-	context->assetManager->addFont(FONTS::MAIN_FONT, "main.ttf");
-	text.setFont(t_style.font);
+	context->assetManager->addFont(t_style.font, "main.ttf");
+	text.setFont(context->assetManager->getFont(t_style.font));
 	text.setString(t_style.text);
 	text.setCharacterSize(t_style.characterSize);
 	text.setFillColor(t_style.color);
@@ -26,6 +31,7 @@ void Engine::TextObject::processInput(sf::Event)
 
 bool Engine::TextObject::processUpdate(float time)
 {
+	text.setPosition(x, y);
 	return false;
 }
 

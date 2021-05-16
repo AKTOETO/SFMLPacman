@@ -1,6 +1,5 @@
 #pragma once
 #include "../Context.h"
-#include "../Constans.h"
 #include "BaseObject.h"
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/Text.hpp"
@@ -16,7 +15,7 @@ namespace Engine
 		sf::Text text;
 
 	public:
-		TextObject(std::shared_ptr<Context> context, TextStyle t_style);
+		TextObject(std::shared_ptr<Context> context, TextStyle& t_style);
 		~TextObject() {};
 
 		void activate() override;

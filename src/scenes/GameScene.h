@@ -14,12 +14,15 @@ namespace Engine
 		sf::Text score;
 		std::string scoreState;
 		int scoreNum;
+		bool p_deactivate;
 
 	public:
 		GameScene(std::shared_ptr<Context>& _context);
 		~GameScene() {};
 
 		void activate() override;
+		void deactivate() override;
+		bool get_status() override;
 
 		void processInput(sf::Event) override;
 		void processUpdate(float time) override;

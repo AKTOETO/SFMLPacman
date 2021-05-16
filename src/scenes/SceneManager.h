@@ -11,6 +11,7 @@ namespace Engine
 	{
 		std::map<SCENES, std::unique_ptr<BaseScene>> sceneList;
 		SCENES currentScene;
+		SCENES oldScene;
 
 	public:
 		SceneManager() {};
