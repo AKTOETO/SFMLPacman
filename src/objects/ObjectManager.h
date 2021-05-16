@@ -3,14 +3,10 @@
 #include <memory>
 #include <iostream>
 #include "BaseObject.h"
+#include "../Constans.h"
 
 namespace Engine
 {
-	enum class OBJECTS
-	{
-		MAIN_BUTTON = 0,
-	};
-
 	class ObjectManager
 	{
 	protected:

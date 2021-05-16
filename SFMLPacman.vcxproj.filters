@@ -11,6 +11,7 @@
     <ClCompile Include="src\scenes\GameScene.cpp" />
     <ClCompile Include="src\animations\AnimationManager.cpp" />
     <ClCompile Include="src\objects\Logger.cpp" />
+    <ClCompile Include="src\objects\TextObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
@@ -31,6 +32,8 @@
     <ClInclude Include="src\animations\BaseAnimation.h" />
     <ClInclude Include="src\animations\AnimationManager.h" />
     <ClInclude Include="src\objects\Logger.h" />
+    <ClInclude Include="src\Constans.h" />
+    <ClInclude Include="src\objects\TextObject.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\main.ttf" />

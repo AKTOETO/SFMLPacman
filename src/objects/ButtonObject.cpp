@@ -1,18 +1,22 @@
 #include "ButtonObject.h"
 
-Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::string name, float x, float y, TEXTURES texture, SPRITES sprite, FONTS font, int scale, sf::Vector2i size, sf::Vector2i coords)
-	:isPressedFunc(false), isPressedSprite(false), isKeyUpped(false), spriteID(sprite), mousePos({0, 0})
+Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::string name, float xp, float yp,
+	TEXTURES texture, SPRITES _sprite, FONTS font, int scale, sf::Vector2i size, sf::Vector2i coords)
+	:isPressedFunc(false), isPressedSprite(false), isKeyUpped(false), spriteID(_sprite), mousePos({0, 0})
 {
+	x = xp;
+	y = yp;
 	context = _context;
 	//texture
 	context->assetManager->addTexture(texture, "main_button.png");
 
 	//sprite
-	context->assetManager->addSprite(sprite, texture, size, coords);
-	context->assetManager->getSprite(sprite).setOrigin(
-		sf::Vector2f(context->assetManager->getSprite(sprite).getLocalBounds().width / 2, context->assetManager->getSprite(sprite).getLocalBounds().height / 2));
-	context->assetManager->getSprite(sprite).setPosition(x, y);
-	context->assetManager->getSprite(sprite).setScale(scale, scale);
+	context->assetManager->addSprite(spriteID, texture, size, coords);
+	context->assetManager->getSprite(spriteID).setOrigin(
+		sf::Vector2f(context->assetManager->getSprite(spriteID).getLocalBounds().width / 2,
+			context->assetManager->getSprite(spriteID).getLocalBounds().height / 2));
+	context->assetManager->getSprite(spriteID).setPosition(x, y);
+	context->assetManager->getSprite(spriteID).setScale(scale, scale);
 
 	//text
 	playText.setFont(context->assetManager->getFont(font));
@@ -20,7 +24,7 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	playText.setCharacterSize(25);
 	playText.setFillColor(sf::Color::Yellow);
 	playText.setOrigin(playText.getLocalBounds().width / 2, playText.getLocalBounds().height / 2);
-	playText.setPosition(x, y - context->assetManager->getSprite(sprite).getLocalBounds().height / 3);
+	playText.setPosition(x, y - context->assetManager->getSprite(spriteID).getLocalBounds().height / 3);
 
 	//std::cout << "Button Object constructor\n";
 	context->logger->Message("button Object constructor");
@@ -56,9 +60,14 @@ void Engine::ButtonObject::processInput(sf::Event event)
 
 bool Engine::ButtonObject::processUpdate(float time)
 {
+	context->assetManager->getSprite(spriteID).setPosition(x, y);
+	playText.setPosition(x, y - context->assetManager->getSprite(spriteID).getLocalBounds().height / 3);
+	//context->logger->Message("set pos");
+
 	if (context->assetManager->getSprite(spriteID).getGlobalBounds().contains(
 		context->window->mapPixelToCoords(mousePos)))
 	{
+		//context->logger->Message("hovered");
 		if (isPressedFunc)
 		{
 			// переключение сцены на следующую

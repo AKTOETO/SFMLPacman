@@ -9,6 +9,7 @@
 #include "GameScene.h"
 #include "../objects/ButtonObject.h"
 #include "../Context.h"
+#include "../Constans.h"
 
 namespace Engine
 {
@@ -18,6 +19,7 @@ namespace Engine
 		std::shared_ptr<Context> context;
 
 		sf::Text titlePacman;
+		bool deactivate = false;
 
 	public:
 		MainScene(std::shared_ptr<Context>& _context);

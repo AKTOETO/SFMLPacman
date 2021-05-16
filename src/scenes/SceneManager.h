@@ -2,15 +2,10 @@
 #include <map>
 #include <memory>
 #include "../scenes/BaseScene.h"
+#include "../Constans.h"
 
 namespace Engine
 {
-	enum class SCENES
-	{
-		NULL_SCENE = -1,
-		MAIN_SCENE = 0,
-		GAME_SCENE,
-	};
 
 	class SceneManager
 	{

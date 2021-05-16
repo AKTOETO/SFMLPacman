@@ -1,4 +1,5 @@
 #pragma once
+#include "../Constans.h"
 
 #include <map>
 #include <string>
@@ -7,26 +8,9 @@
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Graphics/Sprite.hpp"
 
+
 namespace Engine
 {
-	enum class TEXTURES
-	{
-		GRASS = 0,
-		WALL,
-		COIN,
-		MAIN,
-	};
-
-	enum class FONTS
-	{
-		MAIN_FONT = 0,
-	};
-
-	enum class SPRITES
-	{
-		MAIN_BUTTON = 0,
-		SWITCH_SCENE,
-	};
 
 	class AssetManager
 	{
