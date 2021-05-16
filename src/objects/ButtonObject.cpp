@@ -7,6 +7,9 @@ Engine::ButtonObject::ButtonObject(std::shared_ptr<Context> _context, std::strin
 	x = xp;
 	y = yp;
 	context = _context;
+	//font
+	context->assetManager->addFont(FONTS::MAIN_FONT, "main.ttf");
+	
 	//texture
 	context->assetManager->addTexture(texture, "main_button.png");
 
@@ -83,11 +86,11 @@ bool Engine::ButtonObject::processUpdate(float time)
 		}
 		if (isPressedSprite)
 		{
-			context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setColor({ 192, 192, 192 });
+			context->assetManager->getSprite(spriteID).setColor({ 192, 192, 192 });
 		}
 		else
 		{
-			context->assetManager->getSprite(SPRITES::MAIN_BUTTON).setColor({ 255, 255, 255 });
+			context->assetManager->getSprite(spriteID).setColor({ 255, 255, 255 });
 		}
 	}
 	return false;
@@ -95,6 +98,6 @@ bool Engine::ButtonObject::processUpdate(float time)
 
 void Engine::ButtonObject::processDraw()
 {
-	context->window->draw(context->assetManager->getSprite(SPRITES::MAIN_BUTTON));
+	context->window->draw(context->assetManager->getSprite(spriteID));
 	context->window->draw(playText);
 }

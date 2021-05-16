@@ -8,6 +8,7 @@
 #include "BaseScene.h"
 #include "GameScene.h"
 #include "../objects/ButtonObject.h"
+#include "../objects/TextObject.h"
 #include "../Context.h"
 #include "../Constans.h"
 
@@ -18,7 +19,7 @@ namespace Engine
 	private:
 		std::shared_ptr<Context> context;
 
-		sf::Text titlePacman;
+		//sf::Text titlePacman;
 		bool deactivate = false;
 
 	public:
